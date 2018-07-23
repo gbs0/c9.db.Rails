@@ -1,0 +1,155 @@
+
+Things you may want to cover:
+
+* Ruby version
+    <     Rails version    >
+    - rails -v
+    <     Ruby version     >
+    - ruby -v
+
+* Installing Ruby Gems:
+    <     Declarar gems no arquivo Gemfile    >
+    ./Ruby/Gemfile
+    <     Instalar via console     >
+    - bundle install
+    <     Instalar/Atualizar Bundler     >
+    - gem install bundler
+
+* System dependencies:
+<!>
+
+* Configuration:
+<!>
+
+
+
+
+* Rails(Ruby) Project Creation:
+    <     Já dentro do diretório desejado     >
+    - rails new <ProjectName>
+
+
+
+
+* Database creation:
+    -rake db:create;
+    <    Force data input on db: Syntax     >
+    - Kind(# Nome Scaffold c/ letra maiuscula).create! ([ {}, {}, {}])
+
+
+
+
+* Rails Scaffold Creation:
+    - rails g scaffold <Name = Table/Singular> id:type id:type  id:references
+    <    Rails Controllers Creation    >
+    - rails g controller <controller> <action>
+
+
+
+
+
+* Database Uptade:
+    - rake db:migrate;
+
+
+
+
+* Database Initialization:
+<!>
+
+
+
+
+* Database Erase:
+    - rake db:drop
+
+
+
+
+* Services (job queues, cache servers, search engines, etc.):
+    <    Mostrar Automatização: TASKS    >
+    - rake -T test (filtro para procurar funções)
+    <    Popular banco de dados: DB    >
+    - rake db:seed;
+    - Arquivo com as informações e dados em ./migrate/seeds.rb
+    <    Rodando Rakes Customizados    >
+    - rake <file_name.rake>  <task_name>
+    # rake utils:seed    
+    
+
+
+
+* Deployment instructions:
+    - Rota p/ página index (deve ser modificado dentro do arquivo ~/app/config/routes.rb): {root 'controller'#<action>} 
+    root 'home#index'
+
+
+
+
+* How to run the test suite:
+    <     Carrega toda a aplicação sem subir no servidor     >
+    - rails console
+
+
+
+
+* Iniciar server (Subir Apliicação): 
+    <      Dentro da pasta do projeto na qual queira rodar      >
+    - rails s -b $IP -p $PORT
+
+
+
+
+* ERB (Embedded Ruby Code):
+    <     Operators:     > 
+    - { <%= }//será mostrado na tela & não será mostrado na tela{ <% };
+
+
+
+
+* Rake Task (Automatização de task com Rails):
+    <     Criar tarefa ou automatização     > 
+    - rails g task <name> <action>
+                    utils  seed     #Criado p/ automatizar o seed quando a aplicação
+                                    já estiver rodando ou em produção.
+    <     *Comando inteiro de criação e seed: DB     > 
+    - rake db:drop db:create db:migrate db:seed utils:seed
+
+
+
+
+* Belongs To (Herança de Foreign Key):
+    <     Localização do arquivo : pasta Models     > 
+    - Exemplo: class Contact < ActiveRecord::Base
+                 belongs_to :kind
+            end                     #Neste caso, a classe contato pertence a um Tipo, 
+                                    por meio de um ActiveRecord.
+ 
+
+
+* Belongs To (Processo inverso de Belongs_to:)
+
+* Has One:
+    <     Contato TEM UM Endereço - O método funciona apenas quando uma tabela possui um ID referenciando sua classe (Contact > has_one :address [contact_ID])      >
+        - <! --example: class Contact < ActiveRecord::Base
+                    belongs_to :kind
+                    has_one :address
+            end>
+
+* Has Many:
+    <     Contato TEM VÁRIOS Endereços - O método funciona apenas quando uma tabela possui um ID referenciando sua classe (Contact > has_one :address [contact_ID])      >
+        - <! --example: class Contact < ActiveRecord::Base
+                    belongs_to :kind
+                    has_many :address
+            end>
+
+
+* Strong Params:
+    <     O método [params] carrega todo o caminho de informações entre as rotas no rails   > 
+    - Exemplo: def kind_params
+      params.require(:kind).permit(:description)                    
+                                    #.permit filtra as permissões dadas.
+ 
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
